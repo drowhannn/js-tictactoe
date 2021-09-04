@@ -36,8 +36,7 @@ function handleCellClick(e) {
   if (checkForWin(currentClass)) {
     gameOver = true;
     gameOverMessage = (xTurn ? "X " : "O ") + "Wins!";
-  }
-  if (checkForDraw()) {
+  } else if (checkForDraw()) {
     gameOver = true;
     gameOverMessage = "Draw!";
   }
@@ -90,4 +89,22 @@ function resetGame() {
   });
   document.getElementById("messageContainer").classList.remove("show");
   startGame();
+}
+
+//dark mode
+const toggleSwitch = document.getElementById("darkModeSwitch");
+toggleSwitch.addEventListener("click", handleToggleSwitch);
+
+const r = document.querySelector(":root");
+
+function handleToggleSwitch() {
+  if (toggleSwitch.checked) {
+    r.style.setProperty("--primary-color", "black");
+    r.style.setProperty("--secondary-color", "white");
+    r.style.setProperty("--hover-color", "lightgray");
+  } else {
+    r.style.setProperty("--primary-color", "white");
+    r.style.setProperty("--secondary-color", "black");
+    r.style.setProperty("--hover-color", "lightgray");
+  }
 }
