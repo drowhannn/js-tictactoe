@@ -202,6 +202,7 @@ input:checked + .slider:before {
   border-radius: 3px;
   border: none;
   transition: 300ms ease;
+  color: var(--secondary-color);
   background-color: var(--primary-color);
   border: 1px solid var(--primary-color);
 }

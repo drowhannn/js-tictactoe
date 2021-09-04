@@ -101,7 +101,7 @@ function handleToggleSwitch() {
   if (toggleSwitch.checked) {
     r.style.setProperty("--primary-color", "black");
     r.style.setProperty("--secondary-color", "white");
-    r.style.setProperty("--hover-color", "lightgray");
+    r.style.setProperty("--hover-color", "darkgray");
   } else {
     r.style.setProperty("--primary-color", "white");
     r.style.setProperty("--secondary-color", "black");
