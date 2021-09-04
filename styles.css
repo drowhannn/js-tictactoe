@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:root {
+  --cell-size: 100px;
+}
+
+.board {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+  background-color: white;
+  height: var(--cell-size);
+  width: var(--cell-size);
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cell.x,
+.cell.o {
+  cursor: not-allowed;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:nth-child(3n) {
+  border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+  border-bottom: none;
+}
+
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after {
+  position: absolute;
+  content: "";
+  background-color: black;
+  height: calc(var(--cell-size) * 0.95);
+  width: calc(var(--cell-size) * 0.1);
+  display: block;
+}
+.cell.x::before,
+.board.x .cell:not(.x):not(.o):hover::before {
+  transform: rotate(45deg);
+}
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::after {
+  transform: rotate(-45deg);
+}
+
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after {
+  background-color: lightgray;
+}
+
+.cell.o::before,
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after {
+  position: absolute;
+  content: "";
+  background-color: black;
+  height: calc(var(--cell-size) * 0.9);
+  width: calc(var(--cell-size) * 0.9);
+  border-radius: 50%;
+  display: block;
+}
+
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::after {
+  height: calc(var(--cell-size) * 0.6);
+  width: calc(var(--cell-size) * 0.6);
+  background-color: white;
+}
+
+.board.o .cell:not(.x):not(.o):hover::before {
+  background-color: lightgray;
+}
+
+.messageContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  opacity: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: none;
+}
+.messageContainer h1 {
+  color: white;
+  padding: 10px;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-weight: 300;
+  font-size: 60px;
+}
+
+.messageContainer button {
+  font-size: 30px;
+  padding: 10px;
+  border-radius: 3px;
+  border: none;
+  transition: 300ms ease;
+  background-color: white;
+  border: 1px solid white;
+}
+
+.messageContainer button:hover {
+  color: white;
+  background-color: black;
+}
+
+.messageContainer.show {
+  display: flex;
+}
